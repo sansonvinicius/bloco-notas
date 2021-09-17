@@ -4,10 +4,15 @@ import ListaDeNotas from './components/ListaDeNotas/'
 import "./assets/App.css"
 
 class App extends Component {
+
+  criarNota(titulo, texto){
+    console.log(`uma nova nota foi criada` + titulo + " " + texto);
+  }
+
   render(){
     return (
       <section className="conteudo">
-        <FormularioCadastro/>
+        <FormularioCadastro criarNota={this.criarNota}/>
         <ListaDeNotas/>
       </section>
     );
