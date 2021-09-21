@@ -6,14 +6,20 @@ import "./assets/App.css"
 class App extends Component {
 
   criarNota(titulo, texto){
-    console.log(`uma nova nota foi criada` + titulo + " " + texto);
+    const novaNota = {titulo, texto};
+    this.notas.push(novaNota);
+  }
+
+  constructor(){
+    super();
+    this.notas = [];
   }
 
   render(){
     return (
       <section className="conteudo">
-        <FormularioCadastro criarNota={this.criarNota}/>
-        <ListaDeNotas/>
+        <FormularioCadastro criarNota={this.criarNota.bind(this)}/>
+        <ListaDeNotas notas={this.notas}/>
       </section>
     );
   }
