@@ -11,7 +11,7 @@ class ListaDeCategorias extends Component {
 
     //isncreve  os observadores quando o componente for montado
     componentDidMount() {
-        this.props.categorias.inscrever(this._novasCategoria);
+        this.props.categorias.inscrever(this._novasCategorias);
     }
     //desisncreve todos os observadores quando o componente for desmontado
     componentWillUnmount() {

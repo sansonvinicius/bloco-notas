@@ -13,7 +13,7 @@ export default class Categorias {
 
     //desinscrever os observadores das categorias
     desinscrever(func){
-        //verifica todos os que não tem essa função
+        //verifica todos os que não estão nessa função
         this._inscritos = this._inscritos.filter(f => f!== func);
     }
     //notifica os inscritos das mudanças
