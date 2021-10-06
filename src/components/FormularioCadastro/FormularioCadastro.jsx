@@ -8,6 +8,21 @@ import "./estilo.css"
         this.titulo="";
         this.texto="";
         this.categoria="Sem Categoria";
+        this.state={categorias:[]}
+        this._novasCategorias = this._novasCategorias.bind(this);
+    }
+     //isncreve  os observadores quando o componente for montado
+    componentDidMount() {
+        this.props.categorias.inscrever(this._novasCategorias);
+    }
+
+    //desisncreve todos os observadores quando o componente for desmontado
+    componentWillUnmount() {
+        this.props.categorias.desinscrever(this._novasCategorias);
+    }
+
+    _novasCategorias(categorias){
+        this.setState({...this.state, categorias})
     }
     //método para mudança de categoria no card
     _handelMudancaCategoria(evento){
@@ -43,9 +58,9 @@ import "./estilo.css"
                     className="form-cadastro_input"
                 >
                 <option>Sem Categoria</option>
-                    {this.props.categorias.map((categoria =>{
-                        return(<option>{categoria}</option>)
-                    }))}
+                    {this.state.categorias.map((categoria, index) =>{
+                        return(<option key={index}>{categoria}</option>)
+                    })}
                 </select>
                 <input 
                     type="text" 
